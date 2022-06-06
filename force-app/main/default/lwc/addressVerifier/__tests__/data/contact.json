@@ -1,0 +1,22 @@
+{
+    "fields": {
+        "MailingStreet": {
+            "value": "Sample Street"
+        },
+        "MailingCity": {
+            "value": "Sample London"
+        },
+        "MailingPostalCode": {
+            "value": "SW1A 1AA"
+        },
+        "MailingCountryCode": {
+            "value": "GB"
+        },
+        "Address_Validation_Passed__c": {
+            "value": false
+        },
+        "Address_Validated_On__c": {
+            "value": null
+        }
+    }
+}

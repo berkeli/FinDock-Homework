@@ -1,0 +1,10 @@
+<template>
+    <div class="slds-card slds-align_absolute-center slds-var-p-around_medium">
+        <template if:true={contact}>
+            <button class="slds-button slds-button_brand" onclick={verifyAddressHandler} disabled={loading} title="Validate Address">Validate Address</button>
+            <template if:true={error}>
+                <p>{error}</p>
+            </template>
+        </template>
+    </div>
+</template>

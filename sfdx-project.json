@@ -1,0 +1,12 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true
+    }
+  ],
+  "name": "FinDock-Homework",
+  "namespace": "",
+  "sfdcLoginUrl": "https://findock42-dev-ed.my.salesforce.com",
+  "sourceApiVersion": "53.0"
+}
