@@ -1,21 +1,20 @@
 import { createElement } from "lwc";
 import addressVerifier from "c/addressVerifier";
 import { getRecord } from "lightning/uiRecordApi";
+import verifyAddresses from "@salesforce/apex/AddressVerifier.verifyAddress";
 
 const mockGetRecord = require("./data/contact.json");
-const mockApiResponse = {
-  input: [{}],
-  Matches: [
-    {
-      AQI: "A"
-    }
-  ]
-};
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    json: () => Promise.resolve(mockApiResponse)
-  })
+
+jest.mock(
+  "@salesforce/apex/AddressVerifier.verifyAddress",
+  () => {
+    return {
+      default: jest.fn()
+    };
+  },
+  { virtual: true }
 );
+
 describe("c-addressVerifier", () => {
   afterEach(() => {
     while (document.body.firstChild) {
@@ -43,10 +42,12 @@ describe("c-addressVerifier", () => {
     });
   });
 
-  it("should make an API call to adressy", () => {
+  it("should make an apex callout", () => {
     const element = createElement("c-addressVerifier", {
       is: addressVerifier
     });
+
+    verifyAddresses.mockResolvedValue(["A"]);
 
     document.body.appendChild(element);
     getRecord.emit(mockGetRecord);
@@ -54,11 +55,8 @@ describe("c-addressVerifier", () => {
     return Promise.resolve().then(() => {
       const button = element.shadowRoot.querySelector("button");
       button.click();
-      expect(fetch).toHaveBeenCalledTimes(1);
-      expect(fetch).toHaveBeenCalledWith(
-        "https://api.addressy.com/Cleansing/International/Batch/v1.00/json4.ws",
-        expect.anything()
-      );
+      expect(verifyAddresses).toHaveBeenCalledTimes(1);
     });
   });
+
 });

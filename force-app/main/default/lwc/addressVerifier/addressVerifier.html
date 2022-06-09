@@ -1,10 +1,19 @@
 <template>
-    <div class="slds-card slds-align_absolute-center slds-var-p-around_medium">
-        <template if:true={contact}>
-            <button class="slds-button slds-button_brand" onclick={verifyAddressHandler} disabled={loading} title="Validate Address">Validate Address</button>
+    <div class="slds-card slds-align_absolute-center slds-var-p-around_medium" style="display:flex; flex-direction:column;width:100%">
+        <div class="slds_column" style="width:100%">
+            <div style="width:100%; text-align:center">
+                <button class="slds-button slds-button_brand" onclick={verifyAddressHandler} disabled={loading} title="Validate Address">Validate Address</button>
+            </div>
             <template if:true={error}>
-                <p>{error}</p>
+                <div class="slds-text-color_error" role="error-alert">
+                    {error}
+                </div>
             </template>
-        </template>
+            <template if:true={message}>
+                <div class="slds-text-color_success" role="alert" style="padding:0.5rem">
+                    {message}
+                </div>
+            </template>
+        </div>
     </div>
 </template>
