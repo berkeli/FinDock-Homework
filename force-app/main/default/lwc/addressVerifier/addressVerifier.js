@@ -1,6 +1,6 @@
 import { LightningElement, wire, api } from "lwc";
 import { getFieldValue, getRecord, updateRecord } from "lightning/uiRecordApi";
-import verifyAddresses from "@salesforce/apex/AddressVerifier.verifyAddress";
+import verifyAddresses from "@salesforce/apex/AddressVerifier.verifyAddresses";
 
 import ID_FIELD from "@salesforce/schema/Contact.Id";
 import STREET from "@salesforce/schema/Contact.MailingStreet";
