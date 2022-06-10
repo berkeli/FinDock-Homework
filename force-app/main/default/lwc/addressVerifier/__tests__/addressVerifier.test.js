@@ -1,12 +1,12 @@
 import { createElement } from "lwc";
 import addressVerifier from "c/addressVerifier";
 import { getRecord } from "lightning/uiRecordApi";
-import verifyAddresses from "@salesforce/apex/AddressVerifier.verifyAddress";
+import verifyAddresses from "@salesforce/apex/AddressVerifier.verifyAddresses";
 
 const mockGetRecord = require("./data/contact.json");
 
 jest.mock(
-  "@salesforce/apex/AddressVerifier.verifyAddress",
+  "@salesforce/apex/AddressVerifier.verifyAddresses",
   () => {
     return {
       default: jest.fn()
