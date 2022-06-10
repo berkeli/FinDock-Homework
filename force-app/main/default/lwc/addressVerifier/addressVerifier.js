@@ -65,6 +65,11 @@ export default class addressVerifier extends LightningElement {
             AQI === "No Match" ? "No Matches Found" : `AQI is ${AQI}`;
         }
         this.loading = false;
+      })
+      .catch((error) => {
+        console.log(error);
+        this.error = "Something went wrong";
+        this.loading = false;
       });
   }
 
